@@ -30,23 +30,25 @@ public class Empresa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "nome_empresa")
+	@Column(name = "nome_empresa", nullable = false, length = 80)
 	private String nome;
 
-	@Column(name = "razao_social")
+	@Column(name = "razao_social", nullable = false, length = 120)
 	private String razaoSocial;
-
+	
+	@Column(nullable = false, length = 18)
 	private String cnpj;
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	@Column(name = "data_fundacao")
 	private Date dataFundacao;
 
 	@ManyToOne
-	@JoinColumn(name = "ramo_atividade_id")
+	@JoinColumn(name = "ramo_atividade_id", nullable = false)
 	private RamoAtividade ramoAtividadae;
 	
 	@Enumerated(EnumType.STRING)
+	@Column(nullable = false, length = 30)
 	private TipoEmpresa tipo; 
 	
 
@@ -113,6 +115,14 @@ public class Empresa implements Serializable {
 			return false;
 		Empresa other = (Empresa) obj;
 		return Objects.equals(id, other.id);
+	}
+
+	public TipoEmpresa getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoEmpresa tipo) {
+		this.tipo = tipo;
 	}
 
 	@Override

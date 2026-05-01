@@ -3,6 +3,7 @@ package com.crud.model;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +20,8 @@ public class RamoAtividade implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String descrição;
+	@Column(nullable = false, length = 80)
+	private String descricao;
 
 	public Long getId() {
 		return id;
@@ -29,17 +31,17 @@ public class RamoAtividade implements Serializable {
 		this.id = id;
 	}
 
-	public String getDescrição() {
-		return descrição;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDescrição(String descrição) {
-		this.descrição = descrição;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(descrição, id);
+		return Objects.hash(descricao, id);
 	}
 
 	@Override
@@ -51,7 +53,7 @@ public class RamoAtividade implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		RamoAtividade other = (RamoAtividade) obj;
-		return Objects.equals(descrição, other.descrição) && Objects.equals(id, other.id);
+		return Objects.equals(descricao, other.descricao) && Objects.equals(id, other.id);
 	}
 
 	@Override

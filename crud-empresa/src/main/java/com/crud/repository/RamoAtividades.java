@@ -1,0 +1,41 @@
+package com.crud.repository;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
+import com.crud.model.RamoAtividade;
+
+public class RamoAtividades implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
+	private EntityManager manager;
+	
+	public RamoAtividades () {}
+	
+	public RamoAtividades(EntityManager manager) { //-> recebe no parametro
+		this.manager = manager;
+	}
+	
+	public List<RamoAtividade> pesquisa(String descricao) {
+		CriteriaBuilder criteriaBuilder = manager.getCriteriaBuilder(); //-> para usar aqui //chamamos de Builder, porém, oque ela realmente ajuda é realizar algumas pequenas tarefas aqui no meio da Query
+			
+		
+		
+		CriteriaQuery<RamoAtividade> criteriaQuery = criteriaBuilder.createQuery(RamoAtividade.class);
+		Root<RamoAtividade> root = criteriaQuery.from(RamoAtividade.class);//SELECT ra.* from ramo_atividade ra;
+		
+		criteriaQuery.select(root);
+		criteriaQuery.where(criteriaBuilder.like(root.get("descricao"), descricao + "%")); //buscar Empresas pela letra 'D' (exemplo)..
+		
+		TypedQuery<RamoAtividade> query = manager.createQuery(criteriaQuery);
+		
+		return query.getResultList();
+	}
+}
