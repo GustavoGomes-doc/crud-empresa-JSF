@@ -3,6 +3,7 @@ package com.crud.repository;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -15,6 +16,7 @@ public class RamoAtividades implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Inject //injetando para deixar tudo na mao do CDI
 	private EntityManager manager;
 	
 	public RamoAtividades () {}
@@ -23,7 +25,7 @@ public class RamoAtividades implements Serializable {
 		this.manager = manager;
 	}
 	
-	public List<RamoAtividade> pesquisa(String descricao) {
+	public List<RamoAtividade> pesquisar(String descricao) {
 		CriteriaBuilder criteriaBuilder = manager.getCriteriaBuilder(); //-> para usar aqui //chamamos de Builder, porém, oque ela realmente ajuda é realizar algumas pequenas tarefas aqui no meio da Query
 			
 		

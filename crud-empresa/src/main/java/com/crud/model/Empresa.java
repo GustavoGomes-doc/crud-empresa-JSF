@@ -45,7 +45,7 @@ public class Empresa implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "ramo_atividade_id", nullable = false)
-	private RamoAtividade ramoAtividadae;
+	private RamoAtividade ramoAtividade;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, length = 30)
@@ -65,6 +65,11 @@ public class Empresa implements Serializable {
 	}
 
 	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	
+	public void setNomeEmpresa(String nome) {
 		this.nome = nome;
 	}
 
@@ -92,12 +97,12 @@ public class Empresa implements Serializable {
 		this.dataFundacao = dataFundacao;
 	}
 
-	public RamoAtividade getRamoAtividadae() {
-		return ramoAtividadae;
+	public RamoAtividade getRamoAtividade() {
+		return ramoAtividade;
 	}
 
-	public void setRamoAtividadae(RamoAtividade ramoAtividadae) {
-		this.ramoAtividadae = ramoAtividadae;
+	public void setRamoAtividade(RamoAtividade ramoAtividade) {
+		this.ramoAtividade = ramoAtividade;
 	}
 
 	@Override
