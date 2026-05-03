@@ -1,10 +1,76 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
 
-</body>
+	<meta charset="UTF-8" />
+	<title>Gestao Empresas</title>
+	<h:outputStylesheet library="css" name="style.css" />
+
+</h:head>
+
+<h:body>
+
+	<header>
+		<h:graphicImage library="img" name="logo.png" />
+	</header>
+	
+	
+	<div id="conteudo">
+		<h:form> <!-- enviar informacoes para managed beans: form. Sem ele nao conseguimos enviar essas informacoes atraves dos nossos componentes -->
+			<h:panelGrid columns="2"> <!-- foco do Panel Grid é mais ajustar os componenetes, layout. -->
+				<h:outputLabel value="Razao Social: " for="razaoSocial" />
+				<h:inputText id="razaoSocial" value="#{gestaoEmpresasBean.empresa.razaoSocial}"/>
+
+				<h:outputLabel value="Nome Empresa: " for="nomeEmpresa" />
+				<h:inputText id="nomeEmpresa" value="#{gestaoEmpresasBean.empresa.nomeEmpresa}"/>
+
+				<h:outputLabel value="Tipo Empresa:" for="tipo" />
+				<h:selectOneMenu id="tipo" value="#{gestaoEmpresasBean.empresa.tipo}">
+					<f:selectItem itemLabel="Selecione o tipo da empresa..." />
+					<f:selectItems value="#{gestaoEmpresasBean.tiposEmpresa}"
+						var="tipoEmpresa"  itemLabel="#{tiposEmpresa.descricao}" itemValue="#{tipoEmpresa}"/>
+					
+				</h:selectOneMenu>
+
+				<h:outputLabel /> 				<!-- somente para ocupar o espaço -->
+				<h:commandButton value="Salvar" actionListener="#{gestaoEmpresasBean.Salvar}"  />
+
+				<h:outputLabel /> 
+				<h:commandLink value="Precisa de Ajuda?" action ="#{gestaoEmpresasBean.ajuda}"  />
+
+			</h:panelGrid>
+			<h:dataTable value="#{[0, 0, 0, 0]}"> <!-- ja o dataTable o foco dele é listar os dados -->
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Razão Social" />
+					</f:facet>
+					
+					<h:outputText value="Crud de Empresas" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Nome Empresa" />
+					</f:facet>
+
+					<h:outputText value="Crud" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel value="Tipo Empresa" />
+					</f:facet>
+
+					<h:outputText value="LTDA" />
+				</h:column>
+				
+			</h:dataTable>
+		</h:form>
+	</div>
+
+	<footer> Crud Empresa "JSF e PrimeFaces" </footer>
+
+</h:body>
 </html>

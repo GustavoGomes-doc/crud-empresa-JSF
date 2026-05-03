@@ -68,6 +68,9 @@ public class Empresa implements Serializable {
 		this.nome = nome;
 	}
 	
+	public String getNomeEmpresa() {
+		return nome;
+	}
 	
 	public void setNomeEmpresa(String nome) {
 		this.nome = nome;

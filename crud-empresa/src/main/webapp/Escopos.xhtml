@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+
+	<meta charset="UTF-8" />
+	<title>Gestao Empresas</title>
+	<h:outputStylesheet library="css" name="style.css" />
+
+</h:head>
+
+<h:body>
+
+	<header>
+		<h:graphicImage library="img" name="logo.png" />
+	</header>
+	
+	
+	<div id="conteudo">
+		<h:form> <!-- enviar informacoes para managed beans: form. Sem ele nao conseguimos enviar essas informacoes atraves dos nossos componentes -->
+			<h:panelGrid columns="2"> <!-- foco do Panel Grid é mais ajustar os componenetes, layout. -->
+				<h:outputLabel value="Número: "/>
+				<h:outputText value="#{gestaoEmpresasBean.numero}" />
+
+				<h:outputLabel /> 				<!-- somente para ocupar o espaço -->
+				<h:commandButton value="Salvar" />
+
+			</h:panelGrid>
+		</h:form>
+	</div>
+
+	<footer> Crud Empresa "JSF e PrimeFaces" </footer>
+
+</h:body>
+</html>

@@ -12,65 +12,72 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-
-	<dependencies>
-		<dependency> <!--CDI -->
-			<groupId>org.jboss.weld.servlet</groupId> <!-- da mesma forma que o JPA é uma especificacao e o Hibernate é um implementacao, o CDI tambem é uma especificacao, o weld tambem é uma implementacao dela-->
-			<artifactId>weld-servlet</artifactId>
-			<version>2.4.0.Final</version>
-			<scope>compile</scope>
-		</dependency>
+	
+	
+		<dependencies>
+			<dependency> <!-- CDI-->
+    			<groupId>org.jboss.weld.servlet</groupId> <!-- da mesma forma que o JPA é uma especificacao e o Hibernate é um implementacao, o CDI tambem é uma especificacao, o weld tambem é uma implementacao dela-->
+    			<artifactId>weld-servlet-shaded</artifactId>
+    			<version>3.1.9.Final</version>
+    			<scope>compile</scope>
+			</dependency>
 		
-		<dependency>
-			<groupId>org.glassfish</groupId> <!-- possui implementacao e especificacao que é o Mojarra -->
-			<artifactId>javax.faces</artifactId>
-			<version>2.3.9</version>
-			<scope>compile</scope>
-		</dependency>
+			<dependency>
+				<groupId>org.glassfish</groupId> <!-- possui implementacao  	especificacao que é o Mojarra -->
+				<artifactId>javax.faces</artifactId>
+				<version>2.3.9</version>
+				<scope>compile</scope>
+			</dependency>
 
-		<dependency>
-			<groupId>org.primefaces</groupId>
-			<artifactId>primefaces</artifactId>
-			<version>14.0.0</version>
-			<scope>compile</scope>
-		</dependency>
+			<dependency>
+				<groupId>org.primefaces</groupId>
+				<artifactId>primefaces</artifactId>
+				<version>14.0.0</version>
+				<scope>compile</scope>
+			</dependency>
 
-		<dependency>
-			<groupId>javax.servlet</groupId> <!-- JPA -->
-			<artifactId>javax.servlet-api</artifactId>
-			<version>4.0.1</version>
-			<scope>provided</scope> <!--não precisa empacotar dentro do pacote final, somente compile-->
-		</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId> <!-- JPA -->
+				<artifactId>javax.servlet-api</artifactId>
+				<version>4.0.1</version>
+				<scope>provided</scope> <!--não precisa empacotar dentro do pacote final, somente compile-->
+			</dependency>
 
-		<dependency> <!--dependencia de API de validacao-->
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>5.3.2.Final</version>
-			<scope>compile</scope>
-		</dependency>
+			<dependency> <!--dependencia de API de validacao-->
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>5.3.2.Final</version>
+				<scope>compile</scope>
+			</dependency>
 
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>5.2.4.Final</version>
-			<scope>compile</scope>
-		</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>5.2.4.Final</version>
+				<scope>compile</scope>
+			</dependency>
+			
+			<dependency>
+    			<groupId>javax.enterprise</groupId>
+    			<artifactId>cdi-api</artifactId>
+   				<version>2.0</version>
+    		</dependency>
 
-		<dependency>
-			<groupId>org.jboss.logging</groupId>
-			<artifactId>jboss-logging</artifactId>
-			<version>3.3.0.Final</version>
-			<scope>compile</scope>
-		</dependency>
+			<dependency>
+				<groupId>org.jboss.logging</groupId>
+				<artifactId>jboss-logging</artifactId>
+				<version>3.3.0.Final</version>
+				<scope>compile</scope>
+			</dependency>
 
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>6.0.5</version>
-			<scope>compile</scope>
-		</dependency>
-	</dependencies>
-
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>6.0.5</version>
+				<scope>compile</scope>
+			</dependency>
+		</dependencies>
+	
 	<build>
 		<plugins>
 			<plugin>
